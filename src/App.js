@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { useStore, actions } from './store';
 function App() {
+  const [state, dispatch] = useStore();
+  const { todos, todo } = state;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(actions.addNewTodo(1));
+  };
+
+  const deleteTodo = (index) => {
+    console.log('click');
+    dispatch(actions.deleteTodo(index));
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form action="" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={todo}
+          onChange={(e) => dispatch(actions.setTodo(e.target.value))}
+        />
+        <button>Submit</button>
+      </form>
+      <ul>
+        {todos.map((todo, index) => {
+          return (
+            <li key={index}>
+              {todo}
+              <button onClick={() => deleteTodo(index)}>delete</button>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
