@@ -1,39 +1,26 @@
-import './App.css';
-import { useStore, actions } from './store';
+import { routes } from './routes';
+import { Routes, Route, Link } from 'react-router-dom';
 function App() {
-  const [state, dispatch] = useStore();
-  const { todos, todo } = state;
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(actions.addNewTodo(1));
-  };
-
-  const deleteTodo = (index) => {
-    console.log('click');
-    dispatch(actions.deleteTodo(index));
-  };
   return (
-    <div className="App">
-      <form action="" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={todo}
-          onChange={(e) => dispatch(actions.setTodo(e.target.value))}
-        />
-        <button>Submit</button>
-      </form>
-      <ul>
-        {todos.map((todo, index) => {
-          return (
-            <li key={index}>
-              {todo}
-              <button onClick={() => deleteTodo(index)}>delete</button>
-            </li>
-          );
-        })}
+    <main className="container mx-auto">
+      <ul className="flex justify-start font-semibold text-2xl">
+        <li className="hover:text-[#50d71e] transition ease-in-out delay-100 mx-5">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="hover:text-[#50d71e] transition ease-in-out delay-100 mx-5">
+          <Link to="/product">Product</Link>
+        </li>
+        <li className="hover:text-[#50d71e] transition ease-in-out delay-100 mx-5">
+          <Link to="/account">Account</Link>
+        </li>
       </ul>
-    </div>
+      <Routes>
+        {routes.map((route, index) => {
+          const Page = route.component;
+          return <Route key={index} path={route.path} element={<Page />} />;
+        })}
+      </Routes>
+    </main>
   );
 }
-
 export default App;

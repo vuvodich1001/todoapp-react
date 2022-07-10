@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn {
+        @apply py-2 px-3 border text-white rounded-full bg-indigo-500;
+    }
+}

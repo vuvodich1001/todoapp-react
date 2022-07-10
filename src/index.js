@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { BrowserRouter as Route } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './store';
+import './assets/css/index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StoreProvider>
     <React.StrictMode>
-      <App />
+      <Route>
+        <App />
+      </Route>
     </React.StrictMode>
   </StoreProvider>
 );
