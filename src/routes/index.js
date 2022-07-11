@@ -1,11 +1,15 @@
-import Product from '../pages/Product';
-import Home from '../pages/Home';
-import Account from '../pages/Account';
+import Home from '@/pages/customer/Home';
+import Product from '@/pages/customer/Product';
+import Account from '@/pages/customer/Account';
 
 export const routes = [
   {
     path: '/',
-    component: Home
+    component: Product
+  },
+  {
+    path: '/home',
+    component: Product
   },
   {
     path: '/product',
@@ -14,5 +18,9 @@ export const routes = [
   {
     path: '/account',
     component: Account
+  },
+  {
+    path: '/admin',
+    component: Home
   }
 ];

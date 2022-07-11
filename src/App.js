@@ -1,26 +1,27 @@
 import { routes } from './routes';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import DefaultLayout from '@/layouts/DefaultLayout';
 function App() {
   return (
-    <main className="container mx-auto">
-      <ul className="flex justify-start font-semibold text-2xl">
-        <li className="hover:text-[#50d71e] transition ease-in-out delay-100 mx-5">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="hover:text-[#50d71e] transition ease-in-out delay-100 mx-5">
-          <Link to="/product">Product</Link>
-        </li>
-        <li className="hover:text-[#50d71e] transition ease-in-out delay-100 mx-5">
-          <Link to="/account">Account</Link>
-        </li>
-      </ul>
+    <div className="App">
       <Routes>
         {routes.map((route, index) => {
           const Page = route.component;
-          return <Route key={index} path={route.path} element={<Page />} />;
+          const Layout = route.layout || DefaultLayout;
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                <Layout>
+                  <Page />
+                </Layout>
+              }
+            />
+          );
         })}
       </Routes>
-    </main>
+    </div>
   );
 }
 export default App;
