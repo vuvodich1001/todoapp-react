@@ -38,10 +38,10 @@ function Header() {
           </div>
         </div>
         <div className="ml-12">
-          <button className="btn mx-1">
+          <Link to="/cart" className="btn mx-1">
             <i className="fa-solid fa-cart-shopping"></i>
             <span className="inline-block ml-2">0</span>
-          </button>
+          </Link>
           <button className="btn mx-1">
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>

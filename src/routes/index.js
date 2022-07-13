@@ -1,6 +1,7 @@
 import Home from '@/pages/customer/Home';
 import Product from '@/pages/customer/Product';
 import Account from '@/pages/customer/Account';
+import Cart from '@/pages/customer/Cart';
 
 export const routes = [
   {
@@ -22,5 +23,9 @@ export const routes = [
   {
     path: '/admin',
     component: Home
+  },
+  {
+    path: '/cart',
+    component: Cart
   }
 ];
